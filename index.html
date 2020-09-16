@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text editor</title>
+  <style type="text/css">
+    body {
+      text-align: center;
+      margin: 10px;
+      font-family: "Courier New", Courier;
+      font-size: 1.4em;
+      background-color: lightgray;
+    }
+
+    #editor {
+      min-height: 74vw;
+      width: 80vw;
+      margin-left: 10vw;
+      border: solid;
+      border-width: 0px;
+      text-align: left;
+      background-color: #fff;
+      padding: 15px;
+
+      -webkit-box-shadow: 6px 10px 9px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 6px 10px 9px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 6px 10px 9px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    h1 {
+      font-size: 2em;
+      font-family: Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 900;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Текстовый редактор</h1>
+
+  <div id="editor" contenteditable="true">
+
+  </div>
+
+  <script>
+    let editor = document.getElementById('editor');
+
+    let textInStorage = localStorage.getItem('text_in_editor');
+
+    if (textInStorage !== null) {
+      editor.innerHTML = textInStorage;
+    }
+    document.addEventListener('keyup', function (e) {
+      localStorage.setItem('text_in_editor', editor.innerHTML);
+    });
+  </script>
+</body>
+
+</html>
